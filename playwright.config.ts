@@ -83,7 +83,8 @@ export default defineConfig({
         // Set the storage state here if you have only one user to login.
         // storageState: STORAGE_STATE_LOGIN,
         launchOptions: {
-          args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox'],
+          args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
+        '--disable-dev-shm-usage'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }
@@ -94,10 +95,9 @@ export default defineConfig({
         browserName: 'chromium',
         ...devices['Desktop Edge'],
         channel: 'msedge',
-        testIdAttribute: 'data-test',
-        userAgent: Constants.AUTOMATION_USER_AGENT,
         launchOptions: {
-          args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox'],
+          args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
+        '--disable-dev-shm-usage'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }
@@ -108,10 +108,9 @@ export default defineConfig({
         browserName: 'firefox',
         ...devices['Desktop Firefox'],
         channel: 'firefox',
-        testIdAttribute: 'data-test',
-        userAgent: Constants.AUTOMATION_USER_AGENT,
         launchOptions: {
-          args: ['--disable-web-security', '--start-maximized', '--no-sandbox'],
+          args: ['--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
+        '--disable-dev-shm-usage'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }
@@ -122,8 +121,6 @@ export default defineConfig({
         browserName: 'webkit',
         ...devices['Desktop Safari'],
         channel: 'webkit',
-        testIdAttribute: 'data-test',
-        userAgent: Constants.AUTOMATION_USER_AGENT,
         viewport: { width: 1920, height: 1032 },
         deviceScaleFactor: 1, // Zoom out by reducing the scale factor
         launchOptions: {

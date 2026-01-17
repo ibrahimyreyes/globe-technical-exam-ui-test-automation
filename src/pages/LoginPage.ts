@@ -1,6 +1,7 @@
 import { type Locator, type Page } from '@playwright/test';
 
 export class LoginPage {
+  page: Page;
   private readonly usernameTextBox: Locator;
   private readonly passwordTextBox: Locator;
   private readonly confirmPasswordTextBox: Locator;
@@ -9,6 +10,7 @@ export class LoginPage {
   private readonly signUpButton: Locator;
 
   constructor(page: Page) {
+    this.page = page;
     this.usernameTextBox = page.locator('//input[@id="user_email"]');
     this.passwordTextBox = page.locator('//input[@id="user_password"]');
     this.confirmPasswordTextBox = page.locator('//input[@id="user_password_confirmation"]');
@@ -19,6 +21,8 @@ export class LoginPage {
 
   async enter_username(username: string): Promise<void> {
     const usernameTextBox = this.usernameTextBox;
+    await usernameTextBox.waitFor({ state: 'attached'});
+    await usernameTextBox.waitFor({ state: 'visible'});
     await usernameTextBox.fill(username);
   }
 
@@ -34,12 +38,16 @@ export class LoginPage {
 
   async click_sign_in(): Promise<void> {
     const signInButton = this.signInButton;
+    await signInButton.waitFor({ state: 'attached' });
+    await signInButton.waitFor({ state: 'visible' });
     await signInButton.click();
   }
 
   async click_sign_up(): Promise<void> {
     const signUpButton = this.signUpButton;
     await signUpButton.click();
+    await this.logInButton.waitFor({ state: 'detached' });
+    await this.logInButton.waitFor({ state: 'hidden' });
   }
 
   async click_log_in(): Promise<void> {

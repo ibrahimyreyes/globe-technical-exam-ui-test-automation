@@ -1,8 +1,32 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.402564999999944">
-<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-17T08:27:51.507Z" hostname="chrome" tests="1" failures="0" skipped="0" time="2.972" errors="0">
-<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="2.972">
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="10.055725999999998">
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-17T10:06:43.788Z" hostname="chrome" tests="1" failures="0" skipped="0" time="8.166" errors="0">
+<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="8.166">
 <system-out>
-<![CDATA[[2026-01-17 16:27:52] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
+<![CDATA[[2026-01-17 18:06:45] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-17T10:06:43.788Z" hostname="edge" tests="1" failures="0" skipped="0" time="4.274" errors="0">
+<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="4.274">
+<system-out>
+<![CDATA[[2026-01-17 18:06:45] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-17T10:06:43.788Z" hostname="firefox" tests="1" failures="0" skipped="0" time="6.246" errors="0">
+<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="6.246">
+<system-out>
+<![CDATA[[2026-01-17 18:06:47] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-17T10:06:43.788Z" hostname="webkit" tests="1" failures="0" skipped="0" time="5.583" errors="0">
+<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="5.583">
+<system-out>
+<![CDATA[[2026-01-17 18:06:45] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
 ]]>
 </system-out>
 </testcase>

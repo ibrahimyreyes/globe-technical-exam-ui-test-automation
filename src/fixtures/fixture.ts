@@ -9,6 +9,11 @@ import { ActionUtils } from 'src/utilities/ActionUtils';
 import { AccountPage } from '@pages/AccountPage';
 import { HeaderPage } from '@pages/HeaderPage';
 import { LoginPage } from '@pages/LoginPage';
+import { GlobalPage } from '@pages/common/GlobalPage';
+import { ProductPage } from '@pages/ProductPage';
+import { ProductDetailsPage } from '@pages/ProductDetailsPage';
+
+// fixtures for page objects
 
 const pageFixtures = base.extend<PageType>({
   accountPage: async ({ page }, use) => {
@@ -19,6 +24,15 @@ const pageFixtures = base.extend<PageType>({
   },
   headerPage: async ({ page }, use) => {
     await use(new HeaderPage(page));
+  },
+  globalPage: async ({ page }, use) => {
+    await use(new GlobalPage(page));
+  },
+  productPage: async ({ page }, use) => {
+    await use(new ProductPage(page));
+  },
+  productDetailsPage: async ({ page }, use) => {
+    await use(new ProductDetailsPage(page));
   }
 });
 

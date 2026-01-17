@@ -24,6 +24,8 @@ test.describe('User will signup then proceed the process until place order', { t
 
     await test.step('Navigate to application', async () => {
       await actionUtils.navigateTo(APPCONFIG.Prd.Demoqa.App.URL);
+      const pageTitle = await page.title();
+      expect(pageTitle).toBe('Spree Commerce DEMO');
     });
 
     await test.step('Sign up', async () => {    
@@ -33,13 +35,22 @@ test.describe('User will signup then proceed the process until place order', { t
       await loginPage.enter_password("pwD12345!");
       await loginPage.enter_confirm_password("pwD12345!");
       await loginPage.click_sign_in();
-      // assert sign up successful
+      const element = globalPage.flash_message_notification_elem;
+      expect(element).toBeTruthy();
+    });
+
+    await test.step('Add product to cart', async () => {    
       await headerPage.click_shop_all_link();
       await productPage.click_first_product_link(); //temporary fix. need to select product for data driven
+      await productDetailsPage
       const productPrice = await productDetailsPage.get_price();
       console.log('Product Price:', productPrice);
       await productDetailsPage.select_first_size_option();
       await productDetailsPage.click_add_to_cart();
+    });
+
+    await test.step('Check out', async () => {   
+
     });
   });
 });

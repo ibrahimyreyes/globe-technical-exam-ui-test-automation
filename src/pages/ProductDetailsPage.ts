@@ -7,6 +7,8 @@ export class ProductDetailsPage {
   private readonly firstSizeOption: Locator;
   private readonly discountedPriceLabel: Locator;
   private readonly regualrPriceLabel: Locator;
+  private readonly productNameLabel: Locator;
+  private readonly productQty: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +17,8 @@ export class ProductDetailsPage {
     this.firstSizeOption = this.page.locator(`//div[@data-controller="dropdown"][@aria-label="Size"]//label`).first();
     this.discountedPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//p[contains(@class, "inline text-danger")]');
     this.regualrPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//span[@class="hidden"]/following-sibling::p').first();  
+    this.productNameLabel = page.locator('//div[@data-product-form-target="productDetails"]/div[@data-editor-name="Brand"]/parent::div[@data-product-form-target="productDetails"]//h1');
+    this.productQty = page.locator('//div[@data-product-form-target="productDetails"]/div[@data-editor-name="Quantity Selector"]//input[@value]');
   }
 
   async click_add_to_cart(): Promise<void> {
@@ -48,5 +52,19 @@ export class ProductDetailsPage {
       const regularPrice = await regularPriceLabel.textContent() || 'no value';
       return regularPrice.trim();
     }
+  }
+
+  async get_product_name(): Promise<string> {
+    const productNameLabel = this.productNameLabel;
+    await productNameLabel.waitFor({ state: 'visible' });
+    const productName = await productNameLabel.textContent() || 'no value';
+    return productName.trim();
+  }
+
+  async get_product_quantity(): Promise<number> {
+    const productQty = this.productQty;
+    await productQty.waitFor({ state: 'visible' });
+    const qtyValue = await productQty.getAttribute('value') || '0';
+    return parseInt(qtyValue, 10);
   }
 }

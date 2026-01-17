@@ -64,7 +64,7 @@ export class ProductDetailsPage {
   async get_product_quantity(): Promise<number> {
     const productQty = this.productQty;
     await productQty.waitFor({ state: 'visible' });
-    const qtyValue = await productQty.getAttribute('value') || '0';
+    const qtyValue = await productQty.inputValue() || '0';
     return parseInt(qtyValue, 10);
   }
 }

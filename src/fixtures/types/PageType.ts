@@ -4,6 +4,7 @@ import { HeaderPage } from '@pages/HeaderPage';
 import { GlobalPage } from '@pages/common/GlobalPage';
 import { ProductPage } from '@pages/ProductPage';
 import { ProductDetailsPage } from '@pages/ProductDetailsPage';
+import { AddToCartPage } from '@pages/AddToCartPage';
 
 export interface PageFixtures {
   accountPage: AccountPage;
@@ -12,7 +13,7 @@ export interface PageFixtures {
   globalPage: GlobalPage;
   productPage: ProductPage;
   productDetailsPage: ProductDetailsPage;  
-
+  addToCartPage: AddToCartPage;
 } 
 
 export interface PageType extends PageFixtures {}

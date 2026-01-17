@@ -9,6 +9,7 @@ test.describe('User will signup then proceed the process until place order', { t
     globalPage,
     productPage,
     headerPage,
+    addToCartPage,
     actionUtils,
     jsonReader,
     randomDataGenerator,
@@ -41,12 +42,21 @@ test.describe('User will signup then proceed the process until place order', { t
 
     await test.step('Add product to cart', async () => {    
       await headerPage.click_shop_all_link();
-      await productPage.click_first_product_link(); //temporary fix. need to select product for data driven
-      await productDetailsPage
+      await productPage.click_first_product_link(); //temporary fix. need to select product from data driven?
+      const productName = await productDetailsPage.get_product_name();
+      console.log('Product Name:', productName);
+      const productQty = await productDetailsPage.get_product_quantity();
+      console.log('Product Quantity:', productQty);
       const productPrice = await productDetailsPage.get_price();
       console.log('Product Price:', productPrice);
       await productDetailsPage.select_first_size_option();
       await productDetailsPage.click_add_to_cart();
+      const priceElem = await addToCartPage.validate_product_total_price(productPrice);
+      expect(priceElem).toBeTruthy();
+      const nameElem = await addToCartPage.validate_product_name(productName);
+      expect(nameElem).toBeTruthy();
+      const qtyElem = await addToCartPage.validate_product_quantity(productQty);
+      expect(qtyElem).toBeTruthy();
     });
 
     await test.step('Check out', async () => {   

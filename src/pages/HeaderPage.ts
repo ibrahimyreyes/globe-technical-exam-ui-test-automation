@@ -1,17 +1,20 @@
 import { type Locator, type Page } from '@playwright/test';
 
 export class HeaderPage {
+  private page: Page;
   private readonly shopAllLink: Locator;
   private readonly accountIconLink: Locator;
 
   constructor(page: Page) {
-    this.shopAllLink = page.locator('//a[@data-title="shop all"]');
+    this.page = page;
+    this.shopAllLink = page.locator('//div[@class="header--nav-item group"]//a[@data-title="shop all"]');
     this.accountIconLink = page.locator('//button[@aria-label="Open account panel"]');
   }
 
   async click_shop_all_link(): Promise<void> {
     const shopAllLink = this.shopAllLink;
     await shopAllLink.click();
+    await this.page.waitForResponse(response => response.url().includes('/settings') && response.status() === 200);  
   }
 
   async click_account_icon_link(): Promise<void> {

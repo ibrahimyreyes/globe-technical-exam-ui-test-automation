@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.402564999999944">
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-17T08:27:51.507Z" hostname="chrome" tests="1" failures="0" skipped="0" time="2.972" errors="0">
+<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="2.972">
+<system-out>
+<![CDATA[[2026-01-17 16:27:52] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

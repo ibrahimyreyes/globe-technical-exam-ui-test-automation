@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
+    "module": "ESNext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+    // "outFile": "./",                       /* Concatenate and emit output to single file. */
+    "outDir": "./build" /* Redirect output structure to the directory. */,
+    "noEmit": true /* Do not emit outputs. */,
+    /* Strict Type-Checking Options */
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "noImplicitThis": true /* Raise error on 'this' expressions with an implied 'any' type. */,
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "allowJs": true /* Allow javascript files to be compiled. */,
+    /* Module Resolution Options */
+    "moduleResolution": "Bundler" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
+    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "@pages/*": ["src/pages/*"],
+      "@fixtures/*": ["src/fixtures/*"],
+      "@test-setup/*": ["src/hooks/*"],
+      "@utilities/*":["src/utilities/*"],
+      "@helpers/*":["src/helpers/*"],
+      "@types/*":["src/fixtures/types/*"],
+      "@downloads/*":["downloads/*"],
+      "@resources/*":["src/tests/resources/*"],
+      "@settings/*":["settings/*"]
+    },
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx","src/tests/**/*.spec.ts", "environments/env.admin.stage"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "employee": {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "email": "jane.smith@example.com",
+    "age": "29",
+    "salary": "75000",
+    "department": "Engineering" 
+  } 
+}

@@ -8,7 +8,8 @@ test.describe('User will signup then proceed the process until place order', { t
     headerPage,
     actionUtils,
     jsonReader,
-    randomDataGenerator
+    randomDataGenerator,
+    page
   }) => {
     const employeesData = jsonReader.getSection('employee', 'employee', 'employee');
     const randomFirstName = await randomDataGenerator.generateRandomFirstName();
@@ -25,11 +26,13 @@ test.describe('User will signup then proceed the process until place order', { t
     await test.step('Sign up', async () => {    
       await headerPage.click_account_icon_link();
       await loginPage.click_sign_up();
+      await page.waitForResponse(response =>  response.url().includes('/user/sign_up') && response.status() === 200);
       await loginPage.enter_username("racket@gmail.com");
       await loginPage.enter_password("pwD12345!");
       await loginPage.enter_confirm_password("pwD12345!");
       await loginPage.click_sign_in();
       
     });
+
   });
 });

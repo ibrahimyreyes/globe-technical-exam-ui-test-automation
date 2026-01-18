@@ -1,15 +1,17 @@
 import { test, expect } from 'src/hooks/BaseTest';
 import { APPCONFIG } from 'environments/env-prd';
+import { CheckOutPage } from '@pages/CheckOutPage';
 
 test.describe('User will signup then proceed the process until place order', { tag: '@E2E' }, () => {
   test('[T44155]', async ({
-    accountPage, 
+    accountPage,
+    checkOutPage, 
     productDetailsPage, 
     loginPage,
     globalPage,
     productPage,
     headerPage,
-    addToCartPage,
+    cartPage,
     actionUtils,
     jsonReader,
     randomDataGenerator,
@@ -44,23 +46,40 @@ test.describe('User will signup then proceed the process until place order', { t
       await headerPage.click_shop_all_link();
       await productPage.click_first_product_link(); //temporary fix. need to select product from data driven?
       const productName = await productDetailsPage.get_product_name();
-      console.log('Product Name:', productName);
       const productQty = await productDetailsPage.get_product_quantity();
-      console.log('Product Quantity:', productQty);
       const productPrice = await productDetailsPage.get_price();
-      console.log('Product Price:', productPrice);
       await productDetailsPage.select_first_size_option();
       await productDetailsPage.click_add_to_cart();
-      const priceElem = await addToCartPage.validate_product_total_price(productPrice);
+      const priceElem = await cartPage.validate_product_total_price(productPrice);
       expect(priceElem).toBeTruthy();
-      const nameElem = await addToCartPage.validate_product_name(productName);
+      const nameElem = await cartPage.validate_product_name(productName);
       expect(nameElem).toBeTruthy();
-      const qtyElem = await addToCartPage.validate_product_quantity(productQty);
+      const qtyElem = await cartPage.validate_product_quantity(productQty);
       expect(qtyElem).toBeTruthy();
     });
 
-    await test.step('Check out', async () => {   
+  
 
+    await test.step('Fill up address form', async () => {   
+      await cartPage.click_check_out_button();
+      await checkOutPage.select_country('United States');
+      await checkOutPage.enter_first_name(randomFirstName);
+      await checkOutPage.enter_last_name(randomLastName);
+      await checkOutPage.enter_street_address('123 Main St');
+      await checkOutPage.enter_city_address('New York');
+      await checkOutPage.enter_zip_code('10001');
+      await checkOutPage.click_save_and_continue_button();
+      await checkOutPage.select_standard_delivery_option();
+      const initialAmount = await checkOutPage.get_sub_total_amount();
+      console.log('Initial Amount:', initialAmount);
+      const shippingAmount = await checkOutPage.get_total_shipping_amount();
+      console.log('Shipping Amount:', shippingAmount);
+      // await checkOutPage.select_next_day_delivery_option();
+      // await checkOutPage.getInitialAmount();
+      // const shippingAmount = await checkOutPage.get_total_shipping_amount();
+      // console.log('Shipping Amount:', shippingAmount);
+      // const initialAmount = await checkOutPage.get_inital_amount();
+      // console.log('Initial Amount:', initialAmount); 
     });
   });
 });

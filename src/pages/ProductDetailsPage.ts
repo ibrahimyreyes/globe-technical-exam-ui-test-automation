@@ -14,7 +14,7 @@ export class ProductDetailsPage {
     this.page = page;
     this.addToCardButton = page.locator('//div[@data-editor-name="Add To Cart"]').first();
     this.sizeDropdown = page.locator('//div[@data-controller="dropdown"][@aria-label="Size"]//button');
-    this.firstSizeOption = this.page.locator(`//div[@data-controller="dropdown"][@aria-label="Size"]//label`).first();
+    this.firstSizeOption = this.page.locator(`//div[@data-controller="dropdown"][@data-dropdown-open-value="true"][@aria-label="Size"]//label`).first();
     this.discountedPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//p[contains(@class, "inline text-danger")]');
     this.regualrPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//span[@class="hidden"]/following-sibling::p').first();  
     this.productNameLabel = page.locator('//div[@data-product-form-target="productDetails"]/div[@data-editor-name="Brand"]/parent::div[@data-product-form-target="productDetails"]//h1');
@@ -23,6 +23,8 @@ export class ProductDetailsPage {
 
   async click_add_to_cart(): Promise<void> {
     const addToCardButton = this.addToCardButton;
+    await addToCardButton.waitFor({ state: 'attached' });
+    await addToCardButton.waitFor({ state: 'visible' });
     await addToCardButton.click();
   }
 
@@ -33,6 +35,7 @@ export class ProductDetailsPage {
     await firstSizeOption.waitFor({ state: 'attached' });
     await firstSizeOption.waitFor({ state: 'visible' });
     await firstSizeOption.click(); 
+    await firstSizeOption.waitFor({ state: 'detached' });
   }
 
   async get_price(): Promise<string> {

@@ -8,6 +8,8 @@ export class ProductPage {
   }
   async click_first_product_link(): Promise<void> {
     const firstItemProductLink = this.firstItemProductLink;
+    await firstItemProductLink.waitFor({ state: 'attached'});
+    await firstItemProductLink.waitFor({ state: 'visible'});
     await firstItemProductLink.click();
   }
 }

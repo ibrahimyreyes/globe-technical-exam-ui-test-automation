@@ -12,7 +12,8 @@ import { LoginPage } from '@pages/LoginPage';
 import { GlobalPage } from '@pages/common/GlobalPage';
 import { ProductPage } from '@pages/ProductPage';
 import { ProductDetailsPage } from '@pages/ProductDetailsPage';
-import { AddToCartPage } from '@pages/AddToCartPage';
+import { CartPage } from '@pages/CartPage';
+import { CheckOutPage } from '@pages/CheckOutPage';
 
 // fixtures for page objects
 
@@ -35,8 +36,11 @@ const pageFixtures = base.extend<PageType>({
   productDetailsPage: async ({ page }, use) => {
     await use(new ProductDetailsPage(page));
   },
-  addToCartPage: async ({ page }, use) => {
-    await use(new AddToCartPage(page));
+  cartPage: async ({ page }, use) => {
+    await use(new CartPage(page));
+  },
+  checkOutPage: async ({ page }, use) => {
+    await use(new CheckOutPage(page));
   }
 });
 

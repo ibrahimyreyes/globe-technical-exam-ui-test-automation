@@ -1,20 +1,22 @@
 import { type Locator, type Page } from '@playwright/test';
 
-export class AddToCartPage {
+export class CartPage {
   private page: Page;
   private readonly checkOutButton: Locator;
-
-
+  
   constructor(page: Page) {
     this.page = page;
-    this.checkOutButton = page.locator('//a[@data-cart-target="checkoutButton"]');
-   
+    this.checkOutButton = page.locator('//a[@data-cart-target="checkoutButton"]');  
   }
+
   async click_check_out_button(): Promise<void> {
     const checkOutButton = this.checkOutButton;
     await checkOutButton.waitFor({ state: 'attached' });
     await checkOutButton.waitFor({ state: 'visible' });
-    await checkOutButton.click();
+    await Promise.all([
+    this.page.waitForResponse(response => response.url().includes('pay.google.com/gp/p/js/pay.js') && response.status() === 200),
+      checkOutButton.click()
+    ]);
   }
 
   async validate_product_name(expectedProductName: string): Promise<boolean> {
@@ -37,6 +39,4 @@ export class AddToCartPage {
     await productQtyInCart.waitFor({ state: 'visible' });
     return await productQtyInCart.isVisible();
   }
-
-
 }

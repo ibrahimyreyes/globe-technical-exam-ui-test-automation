@@ -15,6 +15,7 @@ export class CheckOutPage {
   private readonly streetAddressOptions: Locator;
   private readonly cityAddressTextBox: Locator;
   private readonly zipCodeTextBox: Locator;
+  private readonly totalAmountElem: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -32,7 +33,7 @@ export class CheckOutPage {
     this.shippingLabelElem = page.locator('//div[@data-hook="order_summary"]/div[3]/span[2]');
      //*[@id="checkout_summary"]/div/div[1]/div[3]/span[2]
     this.subTotalAmountElem = page.locator('(//div[@data-hook="order_summary"]/div/span)[2]');
-    //span[@id="summary-order-total"]
+    this.totalAmountElem = page.locator('//div[@data-hook="order_summary"]//span[@id="summary-order-total"]');
   }
   //Address page
   async select_country(countryName: string): Promise<void> {
@@ -127,5 +128,13 @@ export class CheckOutPage {
       return (parseFloat(initialAmount ?? '0') + totalShippingAmount).toString();
     }
     return initialAmount?.trim() ?? 'Not found';
+  }
+
+  async get_total_amount_elem(): Promise<String> {
+    const totalAmountElem = this.totalAmountElem; 
+    await totalAmountElem.waitFor({ state: 'attached' });
+    await totalAmountElem.waitFor({ state: 'visible' });
+    const totalAmount = await totalAmountElem.textContent();
+    return totalAmount?.trim() ?? 'Not found';  
   }
 }

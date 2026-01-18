@@ -61,7 +61,7 @@ test.describe('User will signup then proceed the process until place order', { t
   
 
     await test.step('Fill up address form', async () => {   
-      await cartPage.click_check_out_button();
+      await cartPage.click_check_out_button(); 
       await checkOutPage.select_country('United States');
       await checkOutPage.enter_first_name(randomFirstName);
       await checkOutPage.enter_last_name(randomLastName);
@@ -74,6 +74,14 @@ test.describe('User will signup then proceed the process until place order', { t
       console.log('Initial Amount:', initialAmount);
       const shippingAmount = await checkOutPage.get_total_shipping_amount();
       console.log('Shipping Amount:', shippingAmount);
+      const finalAmount = await checkOutPage.get_final_amount();
+      console.log('Final Amount:', finalAmount); 
+      const totalAmount =  await checkOutPage.get_total_amount_elem();
+      console.log('Total Amount Element:', totalAmount);
+      expect(finalAmount).toBe(totalAmount);
+      
+      // await checkOutPage.select_premium_delivery_option();
+      
       // await checkOutPage.select_next_day_delivery_option();
       // await checkOutPage.getInitialAmount();
       // const shippingAmount = await checkOutPage.get_total_shipping_amount();

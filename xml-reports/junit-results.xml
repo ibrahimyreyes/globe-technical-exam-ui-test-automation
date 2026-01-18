@@ -1,2 +1,38 @@
-<testsuites id="" name="" tests="0" failures="0" skipped="0" errors="0" time="1.785862">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="96.696996">
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-18T11:22:51.498Z" hostname="webkit" tests="1" failures="1" skipped="0" time="91.867" errors="0">
+<testcase name="User will signup then proceed the process until place order › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="91.867">
+<failure message="verify-place-order-with-login-user.spec.ts:6:3 [T44155]" type="FAILURE">
+<![CDATA[  [webkit] › E2E\verify-place-order-with-login-user.spec.ts:6:3 › User will signup then proceed the process until place order › [T44155] @E2E › Fill up address form 
+
+    TimeoutError: locator.waitFor: Timeout 60000ms exceeded.
+    Call log:
+      - waiting for locator('xpath=(//li[@data-checkout-delivery-target="shippingRate"])[1]')
+
+
+       at ..\..\pages\CheckOutPage.ts:79
+
+      77 |   async select_standard_delivery_option(): Promise<void> {
+      78 |     const standardDeliveryOptionRadio = this.standardDeliveryOptionRadio;
+    > 79 |     await standardDeliveryOptionRadio.waitFor({state:"attached"});
+         |                                       ^
+      80 |     await standardDeliveryOptionRadio.waitFor({state:"visible"});
+      81 |     await standardDeliveryOptionRadio.click();
+      82 |     await this.page.waitForResponse(Response=> Response.url().includes('/update/delivery') && Response.status() === 200);
+        at CheckOutPage.select_standard_delivery_option (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CheckOutPage.ts:79:39)
+        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:72:26
+        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:63:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\E2E-verify-place-order-wit-eb1f6-s-until-place-order-T44155--webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[[2026-01-18 19:22:54] Successfully loaded test data from: C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\resources\test-data\employee\employee.json
+
+[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-eb1f6-s-until-place-order-T44155--webkit\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
 </testsuites>

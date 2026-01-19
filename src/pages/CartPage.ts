@@ -34,7 +34,7 @@ export class CartPage {
   }
 
   async validate_product_quantity(expectedQuantity: number): Promise<boolean> { 
-    const productQtyInCart =  this.page.locator(`//input[@aria-label="Quantity"][@value="${expectedQuantity}"]`).first();
+    const productQtyInCart =  this.page.locator(`//input[@id="line_item_quantity"][@value="${expectedQuantity}"]`).first();
     await productQtyInCart.waitFor({ state: 'attached' });
     await productQtyInCart.waitFor({ state: 'visible' });
     return await productQtyInCart.isVisible();

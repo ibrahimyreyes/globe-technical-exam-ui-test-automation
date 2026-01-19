@@ -13,8 +13,10 @@ export class HeaderPage {
 
   async click_shop_all_link(): Promise<void> {
     const shopAllLink = this.shopAllLink;
-    await shopAllLink.click();
-    await this.page.waitForResponse(response => response.url().includes('/settings') && response.status() === 200);  
+    await Promise.all([
+      this.page.waitForResponse(response => response.url().includes('/settings') && response.status() === 200),
+      await shopAllLink.click()
+    ]);
   }
 
   async click_account_icon_link(): Promise<void> {

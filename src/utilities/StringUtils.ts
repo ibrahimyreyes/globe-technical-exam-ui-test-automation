@@ -31,4 +31,15 @@ export class StringUtils {
 
     return `${day} ${fullMonth},${year}`;
   }
+
+  /** ***********************Currency Utilities*****************************/
+  /**
+   * Converts currency string (e.g., "$10.00") to a number
+   */
+  async parseCurrencyToNumber(currencyString: string): Promise<number> {
+    return parseFloat(currencyString.replace(/[^\d.-]/g, ''));
+  }
+  async convertCommaToDecimal(numberString: string): Promise<string> {
+    return numberString.replace(',', '.');
+  }
 }

@@ -20,8 +20,8 @@ export const test = baseTest.extend<HookFixture>({
     test.setTimeout(0);// No set timeout for each test
     const page = await context.newPage();
     await page.setViewportSize({ width: 1920, height: 1032 });
-    page.setDefaultTimeout(60000); // Set timeout for action (60 seconds)
-    page.setDefaultNavigationTimeout(60000); // Set timeout for navigating the page (60 seconds)
+    page.setDefaultTimeout(30000); // Set timeout for action (30 seconds)
+    page.setDefaultNavigationTimeout(30000); // Set timeout for navigating the page (20 seconds)
     await page.waitForLoadState('networkidle');
     await use(page);
     // This code runs after each test

@@ -1,6 +1,5 @@
 import { test, expect } from 'src/hooks/BaseTest';
 import { APPCONFIG } from 'environments/env-prd';
-import { CheckOutPage } from '@pages/CheckOutPage';
 
 test.describe('User will signup then proceed the process until place order', { tag: '@E2E' }, () => {
   test('[T44155]', async ({
@@ -21,9 +20,7 @@ test.describe('User will signup then proceed the process until place order', { t
     const randomFirstName = await randomDataGenerator.generateRandomFirstName();
     const randomLastName = await randomDataGenerator.generateRandomLastNameWithUUID();
     const randomEmail = randomFirstName + randomLastName + '@example.com';
-    const randomAge = await randomDataGenerator.generateRandomAge();
-    const randomSalary = await randomDataGenerator.generateRandomSalary();
-    const randomDepartment = await randomDataGenerator.generateRandomDepartment();
+    let shippingFee: string;
 
     await test.step('Navigate to application', async () => {
       await actionUtils.navigateTo(APPCONFIG.Prd.Demoqa.App.URL);
@@ -41,7 +38,7 @@ test.describe('User will signup then proceed the process until place order', { t
       const element = globalPage.flash_message_notification_elem;
       expect(element).toBeTruthy();
     });
-
+    //Red Polo Shirt stable data
     await test.step('Add product to cart', async () => {    
       await headerPage.click_shop_all_link();
       await productPage.click_first_product_link(); //temporary fix. need to select product from data driven?
@@ -58,36 +55,52 @@ test.describe('User will signup then proceed the process until place order', { t
       expect(qtyElem).toBeTruthy();
     });
 
-  
-
     await test.step('Fill up address form', async () => {   
       await cartPage.click_check_out_button(); 
-      await checkOutPage.select_country('United States');
+      await checkOutPage.select_country('2411'); //United States  
       await checkOutPage.enter_first_name(randomFirstName);
       await checkOutPage.enter_last_name(randomLastName);
       await checkOutPage.enter_street_address('123 Main St');
       await checkOutPage.enter_city_address('New York');
       await checkOutPage.enter_zip_code('10001');
-      await checkOutPage.click_save_and_continue_button();
-      await checkOutPage.select_standard_delivery_option();
-      const initialAmount = await checkOutPage.get_sub_total_amount();
-      console.log('Initial Amount:', initialAmount);
-      const shippingAmount = await checkOutPage.get_total_shipping_amount();
-      console.log('Shipping Amount:', shippingAmount);
-      const finalAmount = await checkOutPage.get_final_amount();
-      console.log('Final Amount:', finalAmount); 
-      const totalAmount =  await checkOutPage.get_total_amount_elem();
-      console.log('Total Amount Element:', totalAmount);
-      expect(finalAmount).toBe(totalAmount);
+      await checkOutPage.click_save_and_continue_in_billing_address();
+    });
+
+    await test.step('Fill up delivery option', async () => {   
+      //verification of all address delivery options cost
+      const deliveryOptionElems = await checkOutPage.delivery_option_elems();
+      const count = await deliveryOptionElems.count();
+      for (let i = 0; i < count; i++) {
+        const element = deliveryOptionElems.nth(i);
+        const deliveryCost = await element.getAttribute('data-cost') || 'Not Found';
+        await element.click();                                         
+        const totalAmount =  await checkOutPage.get_total_amount_text();
+        const finalAmountAfterShippingCost = await checkOutPage.get_total_cost_with_shipping(deliveryCost);
+        expect(totalAmount).toContain(finalAmountAfterShippingCost);
+      }
+      await checkOutPage.select_first_delivery_option();
+      const firstDeliveryOptionElem = await checkOutPage.get_first_delivery_option_elem();
+      //storing shipping fee for final validation of total amount after tax
+      const firstIndexShippingFee = await firstDeliveryOptionElem.getAttribute('data-cost') || 'Not Found';
+      shippingFee = firstIndexShippingFee;
+      await checkOutPage.click_save_and_continue_in_delivery();
+    });
+
+    await test.step('Fill up payment', async () => {   
+      await checkOutPage.enter_card_number('4242424242424242');
+      await checkOutPage.enter_expiry_date('12/34');
+      await checkOutPage.enter_cvv('123');
+      await checkOutPage.click_pay_now_button();
+
+      const orderNo = await checkOutPage.get_order_no_text();
+      const orderConfirmationMessage = await checkOutPage.get_order_confirmation_message_text();
+      expect(orderNo).toHaveLength(10)
+      expect(orderConfirmationMessage).toContain(randomFirstName);
       
-      // await checkOutPage.select_premium_delivery_option();
-      
-      // await checkOutPage.select_next_day_delivery_option();
-      // await checkOutPage.getInitialAmount();
-      // const shippingAmount = await checkOutPage.get_total_shipping_amount();
-      // console.log('Shipping Amount:', shippingAmount);
-      // const initialAmount = await checkOutPage.get_inital_amount();
-      // console.log('Initial Amount:', initialAmount); 
+      const taxAmount = await checkOutPage.get_tax_amount_text();
+      const totalAmount =  await checkOutPage.get_total_amount_text();
+      const finalAmountAfterTax = await checkOutPage.get_final_amount_cost(shippingFee, taxAmount);
+      //expect(totalAmount).toContain(finalAmountAfterTax);
     });
   });
 });

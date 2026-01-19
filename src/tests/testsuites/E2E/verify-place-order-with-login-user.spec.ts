@@ -67,10 +67,10 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
       // validate each delivery option and its cost reflected in total amount
       const deliveryOptionElems = await checkOutPage.delivery_option_elems();
       const count = await deliveryOptionElems.count();
-      for (let i = 0; i < count; i++) { //will separate function here later for cleaner code
+      for (let i = 0; i < count; i++) { // will separate function here later for cleaner code
         const element = deliveryOptionElems.nth(i);
         const deliveryCost = await element.getAttribute('data-cost') || 'Not Found';
-        await Promise.all([ 
+        await Promise.all([
           element.click(),
           page.waitForResponse(response => response.url().includes('/update/delivery') && response.status() === 200)
         ]);

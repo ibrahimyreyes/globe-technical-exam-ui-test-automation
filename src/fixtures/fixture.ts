@@ -1,9 +1,13 @@
 import { AccountPage } from '@pages/AccountPage';
+import { AddressPage } from '@pages/AddressPage';
 import { CartPage } from '@pages/CartPage';
-import { CheckOutPage } from '@pages/CheckOutPage';
 import { GlobalPage } from '@pages/common/GlobalPage';
-import { HeaderPage } from '@pages/HeaderPage';
+import { OrderSummaryPanelPage } from '@pages/common/OrderSummaryPanelPage';
+import { DeliveryPage } from '@pages/DeliveryPage';
+import { HeaderPage } from '@pages/common/HeaderPage';
 import { LoginPage } from '@pages/LoginPage';
+import { OrderConfirmationPage } from '@pages/OrderConfirmationPage';
+import { PaymentPage } from '@pages/PaymentPage';
 import { ProductDetailsPage } from '@pages/ProductDetailsPage';
 import { ProductPage } from '@pages/ProductPage';
 import { test as base, mergeTests } from '@playwright/test';
@@ -38,8 +42,20 @@ const pageFixtures = base.extend<PageType>({
   cartPage: async ({ page }, use) => {
     await use(new CartPage(page));
   },
-  checkOutPage: async ({ page }, use) => {
-    await use(new CheckOutPage(page));
+  paymentPage: async ({ page }, use) => {
+    await use(new PaymentPage(page));
+  },
+  orderConfirmationPage: async ({ page }, use) => {
+    await use(new OrderConfirmationPage(page));
+  },
+  orderSummaryPanelPage: async ({ page }, use) => {
+    await use(new OrderSummaryPanelPage(page));
+  },
+  addressPage: async ({ page }, use) => {
+    await use(new AddressPage(page));
+  },
+  deliveryPage: async ({ page }, use) => {
+    await use(new DeliveryPage(page));
   }
 });
 

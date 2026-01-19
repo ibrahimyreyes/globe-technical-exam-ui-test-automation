@@ -20,7 +20,7 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
     let shippingFee: string;
 
     await test.step('Navigate to application', async () => {
-      await actionUtils.navigateTo(APPCONFIG.Prd.Demoqa.App.URL);
+      await actionUtils.navigateTo(APPCONFIG.Prd.SpreeCommerce.App.URL);
       const pageTitle = await page.title();
       expect(pageTitle).toBe('Spree Commerce DEMO');
     });

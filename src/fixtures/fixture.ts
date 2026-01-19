@@ -1,19 +1,18 @@
-import { test as base, mergeTests } from '@playwright/test';
-import { PageType } from 'src/fixtures/types/PageType';
-import { HelperType } from 'src/fixtures/types/HelperType';
-
-import { RandomDataGenerator } from 'src/helpers/random-data-generator/RandomDataGenerator';
-import { TestDataReader } from 'src/utilities/reader-utils/JsonReader';
-import { ActionUtils } from 'src/utilities/ActionUtils';
-
 import { AccountPage } from '@pages/AccountPage';
-import { HeaderPage } from '@pages/HeaderPage';
-import { LoginPage } from '@pages/LoginPage';
-import { GlobalPage } from '@pages/common/GlobalPage';
-import { ProductPage } from '@pages/ProductPage';
-import { ProductDetailsPage } from '@pages/ProductDetailsPage';
 import { CartPage } from '@pages/CartPage';
 import { CheckOutPage } from '@pages/CheckOutPage';
+import { GlobalPage } from '@pages/common/GlobalPage';
+import { HeaderPage } from '@pages/HeaderPage';
+import { LoginPage } from '@pages/LoginPage';
+import { ProductDetailsPage } from '@pages/ProductDetailsPage';
+import { ProductPage } from '@pages/ProductPage';
+import { test as base, mergeTests } from '@playwright/test';
+import { HelperType } from 'src/fixtures/types/HelperType';
+import { PageType } from 'src/fixtures/types/PageType';
+
+import { RandomDataGenerator } from 'src/helpers/random-data-generator/RandomDataGenerator';
+import { ActionUtils } from 'src/utilities/ActionUtils';
+import { TestDataReader } from 'src/utilities/reader-utils/JsonReader';
 
 // fixtures for page objects
 

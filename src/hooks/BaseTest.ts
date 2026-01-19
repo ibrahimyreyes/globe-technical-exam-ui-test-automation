@@ -1,5 +1,5 @@
-import { test as baseTest } from 'src/fixtures/fixture';
 import { BrowserContext, Page, expect } from '@playwright/test';
+import { test as baseTest } from 'src/fixtures/fixture';
 
 type HookFixture = {
   context: BrowserContext;

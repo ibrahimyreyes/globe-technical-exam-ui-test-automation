@@ -1,6 +1,6 @@
-import { Logger } from 'src/utilities/logger-utils/Logger';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Logger } from 'src/utilities/logger-utils/Logger';
 
 /**
  *  TestDataReader - Enhanced JSON reader specifically for test data

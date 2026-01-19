@@ -1,5 +1,5 @@
-import { Logger } from '../Logger';
 import type { Reporter, FullConfig, Suite, TestCase, TestResult, FullResult } from '@playwright/test/reporter';
+import { Logger } from '../Logger';
 
 const logger = new Logger();
 

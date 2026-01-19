@@ -109,8 +109,7 @@ export default defineConfig({
         ...devices['Desktop Firefox'],
         channel: 'firefox',
         launchOptions: {
-          args: ['--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
-            '--disable-dev-shm-usage'],
+          args: ['--disable-web-security'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }
@@ -124,7 +123,6 @@ export default defineConfig({
         viewport: { width: 1920, height: 1032 },
         deviceScaleFactor: 1, // Zoom out by reducing the scale factor
         launchOptions: {
-          args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }

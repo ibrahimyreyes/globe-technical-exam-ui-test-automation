@@ -39,6 +39,7 @@ export class StringUtils {
   async parseCurrencyToNumber(currencyString: string): Promise<number> {
     return parseFloat(currencyString.replace(/[^\d.-]/g, ''));
   }
+
   async convertCommaToDecimal(numberString: string): Promise<string> {
     return numberString.replace(',', '.');
   }

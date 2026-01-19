@@ -1,7 +1,7 @@
-import { RandomDataGenerator } from 'src/helpers/random-data-generator/RandomDataGenerator';
 import { TestDataReader } from '@utilities/reader-utils/JsonReader';
-import { ActionUtils } from 'src/utilities/ActionUtils';
 import { StringUtils } from '@utilities/StringUtils';
+import { RandomDataGenerator } from 'src/helpers/random-data-generator/RandomDataGenerator';
+import { ActionUtils } from 'src/utilities/ActionUtils';
 
 export interface TestDataType {
   randomDataGenerator: RandomDataGenerator;

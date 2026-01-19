@@ -14,15 +14,15 @@ export class LoginPage {
     this.usernameTextBox = page.locator('//input[@id="user_email"]');
     this.passwordTextBox = page.locator('//input[@id="user_password"]');
     this.confirmPasswordTextBox = page.locator('//input[@id="user_password_confirmation"]');
-    this.signInButton = page.locator('//form[@id="new_user"]//input[@name="commit"]'); 
+    this.signInButton = page.locator('//form[@id="new_user"]//input[@name="commit"]');
     this.logInButton = page.locator('//input[@id="login-button"]');
-    this.signUpButton = page.locator('//a[@href="/user/sign_up"]');  
+    this.signUpButton = page.locator('//a[@href="/user/sign_up"]');
   }
 
   async enter_username(username: string): Promise<void> {
     const usernameTextBox = this.usernameTextBox;
-    await usernameTextBox.waitFor({ state: 'attached'});
-    await usernameTextBox.waitFor({ state: 'visible'});
+    await usernameTextBox.waitFor({ state: 'attached' });
+    await usernameTextBox.waitFor({ state: 'visible' });
     await usernameTextBox.fill(username);
   }
 

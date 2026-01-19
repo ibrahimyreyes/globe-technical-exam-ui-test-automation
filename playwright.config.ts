@@ -1,7 +1,7 @@
-import { Constants } from './src/utilities/constants';
+import os from 'os';
 import { defineConfig, devices } from '@playwright/test';
 import { config as dotenvConfig } from 'dotenv';
-import os from 'os';
+import { Constants } from './src/utilities/constants';
 
 /**
  * Read environment variables from file.
@@ -84,7 +84,7 @@ export default defineConfig({
         // storageState: STORAGE_STATE_LOGIN,
         launchOptions: {
           args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
-        '--disable-dev-shm-usage'],
+            '--disable-dev-shm-usage'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }
@@ -97,7 +97,7 @@ export default defineConfig({
         channel: 'msedge',
         launchOptions: {
           args: ['--use-gl=egl', '--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
-        '--disable-dev-shm-usage'],
+            '--disable-dev-shm-usage'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }
@@ -110,7 +110,7 @@ export default defineConfig({
         channel: 'firefox',
         launchOptions: {
           args: ['--disable-web-security', '--start-maximized', '--no-sandbox', '--disable-blink-features=AutomationControlled',
-        '--disable-dev-shm-usage'],
+            '--disable-dev-shm-usage'],
           headless: process.env.BROWSER_MODE === 'headed' ? false : true
         }
       }

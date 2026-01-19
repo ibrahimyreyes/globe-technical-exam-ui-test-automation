@@ -3,10 +3,10 @@ import { type Locator, type Page } from '@playwright/test';
 export class CartPage {
   private page: Page;
   private readonly checkOutButton: Locator;
-  
+
   constructor(page: Page) {
     this.page = page;
-    this.checkOutButton = page.locator('//a[@data-cart-target="checkoutButton"]');  
+    this.checkOutButton = page.locator('//a[@data-cart-target="checkoutButton"]');
   }
 
   async click_check_out_button(): Promise<void> {
@@ -14,27 +14,27 @@ export class CartPage {
     await checkOutButton.waitFor({ state: 'attached' });
     await checkOutButton.waitFor({ state: 'visible' });
     await Promise.all([
-    this.page.waitForResponse(response => response.url().includes('pay.google.com/gp/p/js/pay.js') && response.status() === 200),
+      this.page.waitForResponse(response => response.url().includes('pay.google.com/gp/p/js/pay.js') && response.status() === 200),
       checkOutButton.click()
     ]);
   }
 
   async validate_product_name(expectedProductName: string): Promise<boolean> {
-    const productLabelInCart =  this.page.locator(`//a[contains(text(),"${expectedProductName}")]`);
+    const productLabelInCart = this.page.locator(`//a[contains(text(),"${expectedProductName}")]`);
     await productLabelInCart.waitFor({ state: 'attached' });
     await productLabelInCart.waitFor({ state: 'visible' });
     return await productLabelInCart.isVisible();
   }
 
   async validate_product_total_price(expectedPrice: string): Promise<boolean> {
-    const productPriceInCart =  this.page.locator(`//turbo-frame[@id="cart_summary"]//span[contains(text(),"${expectedPrice}")]`).first();
+    const productPriceInCart = this.page.locator(`//turbo-frame[@id="cart_summary"]//span[contains(text(),"${expectedPrice}")]`).first();
     await productPriceInCart.waitFor({ state: 'attached' });
     await productPriceInCart.waitFor({ state: 'visible' });
     return await productPriceInCart.isVisible();
   }
 
-  async validate_product_quantity(expectedQuantity: number): Promise<boolean> { 
-    const productQtyInCart =  this.page.locator(`//input[@id="line_item_quantity"][@value="${expectedQuantity}"]`).first();
+  async validate_product_quantity(expectedQuantity: number): Promise<boolean> {
+    const productQtyInCart = this.page.locator(`//input[@id="line_item_quantity"][@value="${expectedQuantity}"]`).first();
     await productQtyInCart.waitFor({ state: 'attached' });
     await productQtyInCart.waitFor({ state: 'visible' });
     return await productQtyInCart.isVisible();

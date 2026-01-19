@@ -16,7 +16,7 @@ export class ProductDetailsPage {
     this.sizeDropdown = page.locator('//div[@data-controller="dropdown"][@aria-label="Size"]//button');
     this.firstSizeOption = this.page.locator(`//div[@data-controller="dropdown"][@data-dropdown-open-value="true"][@aria-label="Size"]//label`).first();
     this.discountedPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//p[contains(@class, "inline text-danger")]');
-    this.regualrPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//span[@class="hidden"]/following-sibling::p').first();  
+    this.regualrPriceLabel = page.locator('//div[@data-product-form-target="productDetails"]//span[@class="hidden"]/following-sibling::p').first();
     this.productNameLabel = page.locator('//div[@data-product-form-target="productDetails"]/div[@data-editor-name="Brand"]/parent::div[@data-product-form-target="productDetails"]//h1');
     this.productQty = page.locator('//div[@data-product-form-target="productDetails"]/div[@data-editor-name="Quantity Selector"]//input[@value]');
   }
@@ -28,19 +28,19 @@ export class ProductDetailsPage {
     await addToCardButton.click();
   }
 
-  async select_first_size_option(): Promise<void> { 
+  async select_first_size_option(): Promise<void> {
     const sizeDropdown = this.sizeDropdown;
     const firstSizeOption = this.firstSizeOption;
     await sizeDropdown.click();
     await firstSizeOption.waitFor({ state: 'attached' });
     await firstSizeOption.waitFor({ state: 'visible' });
-    await firstSizeOption.click(); 
+    await firstSizeOption.click();
     await firstSizeOption.waitFor({ state: 'detached' });
   }
 
   async get_price(): Promise<string> {
     const discountedPriceLabel = this.discountedPriceLabel;
-    const regularPriceLabel = this.regualrPriceLabel; 
+    const regularPriceLabel = this.regualrPriceLabel;
     const discountedPricePriceExists = await discountedPriceLabel.isVisible();
     const regularPriceExists = await regularPriceLabel.isVisible();
 

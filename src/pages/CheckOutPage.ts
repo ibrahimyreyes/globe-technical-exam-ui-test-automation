@@ -50,7 +50,8 @@ export class CheckOutPage {
     this.orderConfirmationMessageElem = page.locator('//div[@id="checkout"]/div[contains(@id,"order_")]/h4');
   }
 
-  // Address page
+  /** ****** Address page  ********/
+
   async select_country(byValue: string): Promise<void> {
     const countryDropdown = this.countryDropdown;
     await countryDropdown.waitFor({ state: 'attached' });
@@ -91,13 +92,16 @@ export class CheckOutPage {
 
   async click_save_and_continue_in_billing_address(): Promise<void> {
     const saveAndContinueButton = this.saveAndContinueButton;
+    await saveAndContinueButton.waitFor({ state: 'attached' });
+    await saveAndContinueButton.waitFor({ state: 'visible' });
     await Promise.all([
       this.page.waitForResponse(response => response.url().includes('/delivery') && response.status() === 200),
       saveAndContinueButton.click()
     ]);
   }
 
-  // Delivery page
+  /** ****** Delivery page  ********/
+
   async select_first_delivery_option(): Promise<void> {
     const firstDeliveryOptionRadio = this.firstDeliveryOptionRadio;
     await firstDeliveryOptionRadio.waitFor({ state: 'attached' });
@@ -113,13 +117,16 @@ export class CheckOutPage {
 
   async click_save_and_continue_in_delivery(): Promise<void> {
     const saveAndContinueButton = this.saveAndContinueButton;
+    await saveAndContinueButton.waitFor({ state: 'attached' });
+    await saveAndContinueButton.waitFor({ state: 'visible' });
     await Promise.all([
       this.page.waitForResponse(response => response.url().includes('/fingerprinted/js/phone-numbers-lib') && response.status() === 200),
       saveAndContinueButton.click()
     ]);
   }
 
-  // Order summary panel
+  /** ****** Order summary panel  ********/
+
   async get_sub_total_amount(): Promise<string> {
     const subTotalAmountElem = this.subTotalAmountElem;
     await subTotalAmountElem.waitFor({ state: 'attached' });
@@ -161,7 +168,8 @@ export class CheckOutPage {
     return deliveryOptionCheckBoxes;
   }
 
-  // Payment page
+  /** ******Payment page  ********/
+
   async enter_card_number(cardNumber: string): Promise<void> {
     const cardNumberTextBox = this.cardNumberTextBox;
     await cardNumberTextBox.waitFor({ state: 'attached' });
@@ -191,7 +199,6 @@ export class CheckOutPage {
     ]);
   }
 
-  // Payment page
   async click_pay_now_button(): Promise<void> {
     const payNowButton = this.payNowButton;
     await Promise.all([
@@ -222,7 +229,7 @@ export class CheckOutPage {
     return (subTotalAmount + totalShippingAmount + taxAmount).toFixed(2);
   }
 
-  // Order confirmation page
+  /** ****** Order confirmation page  ********/
   async get_order_no_text(): Promise<string> {
     const orderNoElem = this.orderNoElem;
     await orderNoElem.waitFor({ state: 'attached' });

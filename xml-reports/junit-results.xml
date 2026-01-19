@@ -1,308 +1,32 @@
-<testsuites id="" name="" tests="4" failures="4" skipped="0" errors="0" time="71.20186499999998">
-<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T09:15:11.519Z" hostname="chrome" tests="1" failures="1" skipped="0" time="62.046" errors="0">
-<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="62.046">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="38.08428899999987">
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T10:19:19.207Z" hostname="webkit" tests="1" failures="1" skipped="0" time="35.603" errors="0">
+<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="35.603">
 <failure message="verify-place-order-with-login-user.spec.ts:5:3 [T44155]" type="FAILURE">
-<![CDATA[  [chrome] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E › Fill up address form then proceed delivery page 
+<![CDATA[  [webkit] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E › Place order 
 
-    Test timeout of 30000ms exceeded.
+    Error: expect(received).toContain(expected) // indexOf
 
-    Error: page.waitForResponse: Target page, context or browser has been closed
+    Expected substring: "43.64"
+    Received string:    "$40.00"
 
-       at ..\..\pages\CartPage.ts:17
-
-      15 |     await checkOutButton.waitFor({ state: 'visible' });
-      16 |     await Promise.all([
-    > 17 |       this.page.waitForResponse(response => response.url().includes('pay.google.com/gp/p/js/pay.js') && response.status() === 200),
-         |                 ^
-      18 |       checkOutButton.click()
-      19 |     ]);
-      20 |   }
-        at CartPage.click_check_out_button (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CartPage.ts:17:17)
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:56:7
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:55:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: page.waitForResponse: Target page, context or browser has been closed
-
-       at ..\..\pages\CartPage.ts:17
-
-      15 |     await checkOutButton.waitFor({ state: 'visible' });
-      16 |     await Promise.all([
-    > 17 |       this.page.waitForResponse(response => response.url().includes('pay.google.com/gp/p/js/pay.js') && response.status() === 200),
-         |                 ^
-      18 |       checkOutButton.click()
-      19 |     ]);
-      20 |   }
-        at CartPage.click_check_out_button (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CartPage.ts:17:17)
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:56:7
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:55:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome-retry1\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome-retry1\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome-retry1\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome\test-failed-1.png]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome\trace.zip]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome-retry1\test-failed-1.png]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--chrome-retry1\trace.zip]]
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T09:15:11.519Z" hostname="edge" tests="1" failures="1" skipped="0" time="62.416" errors="0">
-<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="62.416">
-<failure message="verify-place-order-with-login-user.spec.ts:5:3 [T44155]" type="FAILURE">
-<![CDATA[  [edge] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E › Fill up address form then proceed delivery page 
-
-    Test timeout of 30000ms exceeded.
-
-    Error: page.waitForResponse: Target page, context or browser has been closed
-
-       at ..\..\pages\CheckOutPage.ts:95
-
-      93 |     const saveAndContinueButton = this.saveAndContinueButton;
-      94 |     await Promise.all([
-    > 95 |       this.page.waitForResponse(response => response.url().includes('/delivery') && response.status() === 200),
-         |                 ^
-      96 |       saveAndContinueButton.click()
-      97 |     ]);
-      98 |   }
-        at CheckOutPage.click_save_and_continue_in_billing_address (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CheckOutPage.ts:95:17)
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:63:26
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:55:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.press: Target page, context or browser has been closed
-    Call log:
-      - waiting for locator('//input[@id="order_ship_address_attributes_address1"]')
-        - locator resolved to <input type="text" autocorrect="off" autocomplete="off" required="required" aria-role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-autocomplete="list" class="text-input w-full" aria-owns="suggestions-box-options" aria-label="Street and house number" placeholder="Street and house number" aria-controls="suggestions-box-options" data-address-autocomplete-target="address1" id="order_ship_address_attributes_address1" name="order[ship_address_attributes][address1]"/>
-      - elementHandle.press("Tab")
-
-
-       at ..\..\pages\CheckOutPage.ts:78
-
-      76 |     await streetAddressField.click();
-      77 |     await streetAddressOptions.waitFor({ state: 'visible' });
-    > 78 |     await streetAddressField.press('Tab');
-         |                              ^
-      79 |     await streetAddressOptions.waitFor({ state: 'hidden' });
-      80 |   }
-      81 |
-        at CheckOutPage.enter_street_address (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CheckOutPage.ts:78:30)
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:60:7
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:55:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge-retry1\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge-retry1\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge-retry1\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge\test-failed-1.png]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge\trace.zip]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge-retry1\test-failed-1.png]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--edge-retry1\trace.zip]]
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T09:15:11.519Z" hostname="firefox" tests="1" failures="1" skipped="0" time="60.093" errors="0">
-<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="60.093">
-<failure message="verify-place-order-with-login-user.spec.ts:5:3 [T44155]" type="FAILURE">
-<![CDATA[  [firefox] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E 
-
-    Test timeout of 30000ms exceeded while setting up "page".
-
-    Error: browserContext.newPage: Target page, context or browser has been closed
-
-       at ..\..\hooks\BaseTest.ts:21
-
-      19 |     // This code runs before each test
-      20 |     //test.setTimeout(0);// No set timeout for each test
-    > 21 |     const page = await context.newPage();
-         |                                ^
-      22 |     await page.setViewportSize({ width: 1920, height: 1032 });
-      23 |     page.setDefaultTimeout(60000); // Set timeout for action (60 seconds)
-      24 |     page.setDefaultNavigationTimeout(30000); // Set timeout for navigating the page (20 seconds)
-        at Object.page (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\hooks\BaseTest.ts:21:32)
-
-    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--firefox\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--firefox\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded while setting up "page".
-
-    Error: browserContext.newPage: Target page, context or browser has been closed
-
-       at ..\..\hooks\BaseTest.ts:21
-
-      19 |     // This code runs before each test
-      20 |     //test.setTimeout(0);// No set timeout for each test
-    > 21 |     const page = await context.newPage();
-         |                                ^
-      22 |     await page.setViewportSize({ width: 1920, height: 1032 });
-      23 |     page.setDefaultTimeout(60000); // Set timeout for action (60 seconds)
-      24 |     page.setDefaultNavigationTimeout(30000); // Set timeout for navigating the page (20 seconds)
-        at Object.page (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\hooks\BaseTest.ts:21:32)
-
-    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--firefox-retry1\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--firefox-retry1\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--firefox\trace.zip]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--firefox-retry1\trace.zip]]
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T09:15:11.519Z" hostname="webkit" tests="1" failures="1" skipped="0" time="62.089" errors="0">
-<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="62.089">
-<failure message="verify-place-order-with-login-user.spec.ts:5:3 [T44155]" type="FAILURE">
-<![CDATA[  [webkit] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E › Add product to cart 
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.waitFor: Target page, context or browser has been closed
-
-       at ..\..\pages\CartPage.ts:38
-
-      36 |   async validate_product_quantity(expectedQuantity: number): Promise<boolean> {
-      37 |     const productQtyInCart = this.page.locator(`//input[@id="line_item_quantity"][@value="${expectedQuantity}"]`).first();
-    > 38 |     await productQtyInCart.waitFor({ state: 'attached' });
-         |                            ^
-      39 |     await productQtyInCart.waitFor({ state: 'visible' });
-      40 |     return await productQtyInCart.isVisible();
-      41 |   }
-        at CartPage.validate_product_quantity (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CartPage.ts:38:28)
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:51:38
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:39:5
+      103 |       const totalAmount = await checkOutPage.get_total_amount_text();
+      104 |       const finalAmountAfterTax = await checkOutPage.get_final_amount_cost(shippingFee, taxAmount);
+    > 105 |       expect(totalAmount).toContain(finalAmountAfterTax);
+          |                           ^
+      106 |     });
+      107 |   });
+      108 | });
+        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:105:27
+        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:96:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit\trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
-
-    Test timeout of 30000ms exceeded.
-
-    Error: locator.waitFor: Target page, context or browser has been closed
-    Call log:
-      - waiting for locator('//turbo-frame[@id="cart_summary"]//span[contains(text(),"$40.00")]').first()
-
-
-       at ..\..\pages\CartPage.ts:31
-
-      29 |   async validate_product_total_price(expectedPrice: string): Promise<boolean> {
-      30 |     const productPriceInCart = this.page.locator(`//turbo-frame[@id="cart_summary"]//span[contains(text(),"${expectedPrice}")]`).first();
-    > 31 |     await productPriceInCart.waitFor({ state: 'attached' });
-         |                              ^
-      32 |     await productPriceInCart.waitFor({ state: 'visible' });
-      33 |     return await productPriceInCart.isVisible();
-      34 |   }
-        at CartPage.validate_product_total_price (C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\pages\CartPage.ts:31:30)
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:47:40
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:39:5
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit-retry1\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit-retry1\trace.zip
-    Usage:
-
-        npx playwright show-trace ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit-retry1\trace.zip
-
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
 <system-out>
 <![CDATA[
 [[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit\test-failed-1.png]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit\trace.zip]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit-retry1\test-failed-1.png]]
-
-[[ATTACHMENT|..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit-retry1\trace.zip]]
 ]]>
 </system-out>
 </testcase>

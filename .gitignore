@@ -1,5 +1,4 @@
 node_modules
 allure-results
 test-results
-xml-reports/
-junit-results.xml
+xml-reports/junit-results.xml

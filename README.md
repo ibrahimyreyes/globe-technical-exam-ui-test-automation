@@ -64,6 +64,15 @@ brew install allure
 ```bash
 allure serve allure-results
 ```
+### View Results Locally from Github Actions artifact:
+
+```bash
+1. Extract zip file from Github Actions artifacts
+2. Navigate to the location where you extracted the zip file
+3. npx allure generate .\allure-results --clean -o allure-report
+4. npx allure open allure-report
+```
+
 
 ## ℹ️  View Help And Other CLI Options
 

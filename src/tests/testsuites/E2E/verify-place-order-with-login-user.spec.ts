@@ -3,7 +3,6 @@ import { APPCONFIG } from 'environments/env-prd';
 
 test.describe('E2E scenario for placing an order with a logged-in user', { tag: '@E2E' }, () => {
   test('[T44155]', async ({
-    accountPage,
     checkOutPage, 
     productDetailsPage, 
     loginPage,
@@ -12,11 +11,9 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
     headerPage,
     cartPage,
     actionUtils,
-    jsonReader,
     randomDataGenerator,
     page
   }) => {
-    const employeesData = jsonReader.getSection('employee', 'employee', 'employee');
     const randomFirstName = await randomDataGenerator.generateRandomFirstName();
     const randomLastName = await randomDataGenerator.generateRandomLastNameWithUUID();
     const randomEmail = randomFirstName + randomLastName + '@example.com';
@@ -55,7 +52,7 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
       expect(qtyElem).toBeTruthy();
     });
 
-    await test.step('Fill up address form', async () => {   
+    await test.step('Fill up address form then proceed delivery page', async () => {   
       await cartPage.click_check_out_button(); 
       await checkOutPage.select_country('2411'); //United States  
       await checkOutPage.enter_first_name(randomFirstName);
@@ -66,7 +63,7 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
       await checkOutPage.click_save_and_continue_in_billing_address();
     });
 
-    await test.step('Fill up delivery option', async () => {   
+    await test.step('Verify delivery options and costs', async () => {   
       //verification of all address delivery options cost
       const deliveryOptionElems = await checkOutPage.delivery_option_elems();
       const count = await deliveryOptionElems.count();
@@ -86,12 +83,14 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
       await checkOutPage.click_save_and_continue_in_delivery();
     });
 
-    await test.step('Fill up payment', async () => {   
+    await test.step('Fill up payment form', async () => {   
       await checkOutPage.enter_card_number('4242424242424242');
       await checkOutPage.enter_expiry_date('12/34');
       await checkOutPage.enter_cvv('123');
       await checkOutPage.click_pay_now_button();
+    });
 
+    await test.step('Place order', async () => {   
       const orderNo = await checkOutPage.get_order_no_text();
       const orderConfirmationMessage = await checkOutPage.get_order_confirmation_message_text();
       expect(orderNo).toHaveLength(10)
@@ -100,7 +99,7 @@ test.describe('E2E scenario for placing an order with a logged-in user', { tag: 
       const taxAmount = await checkOutPage.get_tax_amount_text();
       const totalAmount =  await checkOutPage.get_total_amount_text();
       const finalAmountAfterTax = await checkOutPage.get_final_amount_cost(shippingFee, taxAmount);
-      //expect(totalAmount).toContain(finalAmountAfterTax);
+      expect(totalAmount).toContain(finalAmountAfterTax);
     });
   });
 });

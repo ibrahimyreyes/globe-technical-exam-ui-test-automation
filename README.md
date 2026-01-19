@@ -21,13 +21,9 @@ npm install
 npx playwright install --with-deps
 ```
 
-### Create .env File
-
-Create a `.env` file in the project root directory to securely store project secrets and configuration variables. This file will be used to define key-value pairs for various parameters required by the project. Add the following properties to the `.env` file:
-
 | Parameter  | Description                  | Example Value         |
 |------------|------------------------------|-----------------------|
-| BASE_URL   | The base URL for the application | "https://demoqa.com/" |
+| BASE_URL   | The base URL for the application | "https://demo.spreecommerce.org" |
 
 
 ## 🏃‍♂️ Running Tests

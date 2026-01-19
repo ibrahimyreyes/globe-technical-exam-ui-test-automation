@@ -1,23 +1,23 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="34.66393900000001">
-<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T08:48:00.399Z" hostname="webkit" tests="1" failures="1" skipped="0" time="32.252" errors="0">
-<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="32.252">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="38.08428899999987">
+<testsuite name="E2E\verify-place-order-with-login-user.spec.ts" timestamp="2026-01-19T10:19:19.207Z" hostname="webkit" tests="1" failures="1" skipped="0" time="35.603" errors="0">
+<testcase name="E2E scenario for placing an order with a logged-in user › [T44155]" classname="E2E\verify-place-order-with-login-user.spec.ts" time="35.603">
 <failure message="verify-place-order-with-login-user.spec.ts:5:3 [T44155]" type="FAILURE">
-<![CDATA[  [webkit] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E › Verify delivery options and costs 
+<![CDATA[  [webkit] › E2E\verify-place-order-with-login-user.spec.ts:5:3 › E2E scenario for placing an order with a logged-in user › [T44155] @E2E › Place order 
 
     Error: expect(received).toContain(expected) // indexOf
 
-    Expected substring: "45.00"
+    Expected substring: "43.64"
     Received string:    "$40.00"
 
-      77 |         const totalAmount = await checkOutPage.get_total_amount_text();
-      78 |         const finalAmountAfterShippingCost = await checkOutPage.get_total_cost_with_shipping(deliveryCost);
-    > 79 |         expect(totalAmount).toContain(finalAmountAfterShippingCost);
-         |                             ^
-      80 |       }
-      81 |       await checkOutPage.select_first_delivery_option();
-      82 |       const firstDeliveryOptionElem = await checkOutPage.get_first_delivery_option_elem();
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:79:29
-        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:66:5
+      103 |       const totalAmount = await checkOutPage.get_total_amount_text();
+      104 |       const finalAmountAfterTax = await checkOutPage.get_final_amount_cost(shippingFee, taxAmount);
+    > 105 |       expect(totalAmount).toContain(finalAmountAfterTax);
+          |                           ^
+      106 |     });
+      107 |   });
+      108 | });
+        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:105:27
+        at C:\Users\win10\git\globe-technical-exam-ui-test-automation\src\tests\testsuites\E2E\verify-place-order-with-login-user.spec.ts:96:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ..\..\..\test-results\E2E-verify-place-order-wit-9affe-th-a-logged-in-user-T44155--webkit\test-failed-1.png

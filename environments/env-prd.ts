@@ -9,7 +9,7 @@ dotenv.config({ path: `config/.env.${ENV}` });
 // Export environment-specific settings
 export const APPCONFIG = {
   Prd: {
-    Demoqa: {
+    spreecommerce: {
       App: {
         URL: 'https://demo.spreecommerce.org/'
       }

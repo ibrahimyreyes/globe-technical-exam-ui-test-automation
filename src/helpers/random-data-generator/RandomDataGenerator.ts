@@ -22,19 +22,6 @@ export class RandomDataGenerator {
     return `${lastName}-${uuid}`;
   };
 
-  generateRandomAge = async () => {
-    return faker.number.int({ min: 18, max: 65 }).toString();
-  };
-
-  generateRandomSalary = async () => {
-    return faker.number.int({ min: 30000, max: 150000 }).toString();
-  };
-
-  generateRandomDepartment = async () => {
-    const departments = ['Engineering', 'Marketing', 'Sales', 'HR', 'Finance', 'Operations'];
-    return faker.helpers.arrayElement(departments);
-  };
-
   // Function to generate timestamp in format yymmddhhmmss
   generateTimestamp = async () => {
     const now = new Date();

@@ -11,7 +11,6 @@ export const test = baseTest.extend<HookFixture>({
     // This code runs before all tests
     const context = await browser.newContext();
     await use(context);
-    // This code runs after all tests
     await context.close();
   },
 
@@ -23,7 +22,6 @@ export const test = baseTest.extend<HookFixture>({
     page.setDefaultTimeout(60000); // Set timeout for action (60 seconds)
     page.setDefaultNavigationTimeout(60000); // Set timeout for navigating the page (60 seconds)
     await use(page);
-    // This code runs after each testS
     await page.close();
   }
 });

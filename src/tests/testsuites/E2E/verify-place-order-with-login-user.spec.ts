@@ -1,7 +1,7 @@
 import { test, expect } from 'src/hooks/BaseTest';
 import { APPCONFIG } from 'environments/env-prd';
 
-test.describe('User will signup then proceed the process until place order', { tag: '@E2E' }, () => {
+test.describe('E2E scenario for placing an order with a logged-in user', { tag: '@E2E' }, () => {
   test('[T44155]', async ({
     accountPage,
     checkOutPage, 
@@ -41,7 +41,7 @@ test.describe('User will signup then proceed the process until place order', { t
     //Red Polo Shirt stable data
     await test.step('Add product to cart', async () => {    
       await headerPage.click_shop_all_link();
-      await productPage.click_first_product_link(); //temporary fix. need to select product from data driven?
+      await productPage.click_first_product_link();//Temporary hardcoded to the first product
       const productName = await productDetailsPage.get_product_name();
       const productQty = await productDetailsPage.get_product_quantity();
       const productPrice = await productDetailsPage.get_price();
